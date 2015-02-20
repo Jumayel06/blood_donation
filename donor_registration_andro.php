@@ -4,6 +4,7 @@
         $database = mysql_select_db("blood_donation",$connection);
         
         $donor_name = $_POST["donor_name"];
+        $id = $_POST["id"];
         $donor_blood_group = $_POST["donor_blood_group"];
         $donor_contact_no = $_POST["donor_contact_no"];
         $donor_address = $_POST["donor_address"];
@@ -15,7 +16,7 @@
 						$bank_id = $row['bank_id'];
 		  		} 
         
-        $query="insert into donor (bank_id,donor_name,donor_blood_group,donor_contact_no,donor_address,donor_city) values ('$bank_id','$donor_name','$donor_blood_group','$donor_contact_no','$donor_address','$donor_city')";
+        $query="insert into donor (bank_id,donor_name,donor_govt_id,donor_blood_group,donor_contact_no,donor_address,donor_city) values ('$bank_id','$donor_name','$id','$donor_blood_group','$donor_contact_no','$donor_address','$donor_city')";
 
         $flag["code"]=0;
       
