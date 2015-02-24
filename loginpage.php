@@ -13,6 +13,7 @@
 ?>
 
 
+
 <!-- ................................................PHP SCRIPT END.................................................. -->
 
 
@@ -304,60 +305,7 @@
 						<div>
 							<label>Password: 
                             		<span style="color:red;">
-<!-- ................................................PHP SCRIPT START.................................................. -->
-                          				<?php
-                                        if(isset($_SESSION['error1']))
-                                        {
-                                            if($_SESSION['c1']==1)
-                                            {
-                                                echo $_SESSION["error1"];}
-                                                $_SESSION['c1']=2;
-                                            }
-                                        ?>
-<!-- ................................................PHP SCRIPT START.................................................. -->
-                            	    </span>
-                            </label>
-							<input type="password" name="password" />
-								<span class="error">
-                            	</span>
-						</div>
-						<div class="bottom">
-							<div class="remember"><input type="checkbox" name="remember" /><span>Keep me logged in</span></div>
-								<input type="submit" value="Login" name="submit"></input>
-									<a href="registrationpage.php" rel="register" class="linkform">You don't have an account yet? Register here</a>
-							<div class="clear"></div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-        
-        <div id="regremember">
-  			<strong><p style="color:black; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;  padding-top:0px; font-size:20px; margin-bottom:0px;">Create Account</p></strong>
-      		<br /><br />
-      		<p style="color:black; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;  padding-top:0px; font-size:15px; margin-bottom:0px;">  Blood Donation Service connects blood seekers with blood donors in the time of need. Donate Blood, Save Lives!</p>
-	  		<br /><br />
-        	<p style="color:black; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;  padding-top:0px; font-size:15px; margin-bottom:0px;">   Sign up as a registered blood bank today!</p> 
- 			<br /><br /><br />
- 			<div id="button1" class="e">
-				<a href="registrationpage.php"><strong><p style="font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;  padding-top:0px; font-size:20px; margin-left:10px; margin-bottom:10px; color:#CC0000">Sign Up</p></strong></strong></a>
-			</div>
-        </div>
-	</div>
-</div>
-<!----------------------------------------------------- start footer ------------------------------------------->
-<br /><br /><br />
-<div id="footer">
-	<p class="legal">
-		@2014 Blood Donation Service. All Rights Reserved.
-  </p>
-</div>
-<!---------------------------------------------------- end footer ---------------------------------------------->
-</body>
-</html>
-
-
-<!-- ................................................PHP SCRIPT START.................................................. -->
+                            		<!-- ................................................PHP SCRIPT START.................................................. -->
 <?php
 	if(isset($_POST['submit']))
 	{
@@ -422,4 +370,57 @@
 	}
 ?>
 
-<!-- ................................................PHP SCRIPT END.................................................. -->
+<!-- ...........s.....................................PHP SCRIPT END.................................................. -->
+<!-- ................................................PHP SCRIPT START.................................................. -->
+                          				<?php
+                                        if(isset($_SESSION['error1']))
+                                        {
+                                            if($_SESSION['c1']==1)
+                                            {
+                                                echo $_SESSION["error1"];}
+                                                $_SESSION['c1']=2;
+                                            }
+                                        ?>
+<!-- ................................................PHP SCRIPT START.................................................. -->
+                            	    </span>
+                            </label>
+							<input type="password" name="password" />
+								<span class="error">
+                            	</span>
+						</div>
+						<div class="bottom">
+							<div class="remember"><input type="checkbox" name="remember" /><span>Keep me logged in</span></div>
+								<input type="submit" value="Login" name="submit"></input>
+									<a href="registrationpage.php" rel="register" class="linkform">You don't have an account yet? Register here</a>
+							<div class="clear"></div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+        
+        <div id="regremember">
+  			<strong><p style="color:black; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;  padding-top:0px; font-size:20px; margin-bottom:0px;">Create Account</p></strong>
+      		<br /><br />
+      		<p style="color:black; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;  padding-top:0px; font-size:15px; margin-bottom:0px;">  Blood Donation Service connects blood seekers with blood donors in the time of need. Donate Blood, Save Lives!</p>
+	  		<br /><br />
+        	<p style="color:black; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;  padding-top:0px; font-size:15px; margin-bottom:0px;">   Sign up as a registered blood bank today!</p> 
+ 			<br /><br /><br />
+ 			<div id="button1" class="e">
+				<a href="registrationpage.php"><strong><p style="font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;  padding-top:0px; font-size:20px; margin-left:10px; margin-bottom:10px; color:#CC0000">Sign Up</p></strong></strong></a>
+			</div>
+        </div>
+	</div>
+</div>
+<!----------------------------------------------------- start footer ------------------------------------------->
+<br /><br /><br />
+<div id="footer">
+	<p class="legal">
+		@2014 Blood Donation Service. All Rights Reserved.
+  </p>
+</div>
+<!---------------------------------------------------- end footer ---------------------------------------------->
+</body>
+</html>
+
+
