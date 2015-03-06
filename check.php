@@ -28,6 +28,10 @@ if(mysql_num_rows($data)>0)
      			$diff= floor($datediff/(60*60*24)); 
 			if($diff<90)
 			{
+				if($diff<0)
+				{
+					$diff=0;
+				}
 			print "<span style=\"color:red;\"> Caution: Donor can't give blood!<br /> Donor last donated blood $diff days ago!</span>";
 			$_SESSION['donation']=0;
 			}

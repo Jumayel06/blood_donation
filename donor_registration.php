@@ -19,7 +19,79 @@
 		<link href="default.css" rel="stylesheet" type="text/css" media="screen" />
        		 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 
-   		<script src="script.js"></script>
+   		
+<script language='javascript' type='text/javascript'>
+   			function validate()
+			{
+
+ 	 			name = document.registration.name.value;
+ 	 			id = document.registration.id.value;
+    			contact = document.registration.contact.value;
+    			address = document.registration.address.value;
+ 				if (name == "")
+ 				{
+	 				document.getElementById('error1').innerHTML="*Please enter a name*";
+					return false;
+ 				}
+ 				else if (id == "")
+ 				{
+					//hideerror2();
+					document.getElementById('error2').innerHTML="*Please enter id*";
+			 		return false;
+ 				}
+ 				else if (contact == "")
+ 				{
+					//hideerror2();
+					document.getElementById('error3').innerHTML="*Please enter contact no*";
+			 		return false;
+ 				}
+ 				else if (address == "")
+ 				{
+					//hideerror2();
+					document.getElementById('error4').innerHTML="*Please enter address*";
+			 		return false;
+ 				}
+ 			return( true );
+			}
+
+			function isNumberKey(evt)
+          	{
+             	var charCode = (evt.which) ? evt.which : event.keyCode
+             	if (charCode > 31 && (charCode < 48 || charCode > 57))
+                	return false;
+            return true;
+			}
+			  
+			function checkchar()
+			{
+				if ((event.keyCode > 64 && event.keyCode < 91) || (event.keyCode > 96 && event.keyCode < 123) || event.keyCode == 8)
+   					return true;
+				else
+   				{
+       				alert("Please Enter Only Alphabet!");
+       				return false;
+   				}
+ 			}
+
+
+			function hideerror1() 
+			{
+ 				document.getElementById("error1").style.display = "none";
+			}
+
+			function hideerror2() 
+			{
+ 				document.getElementById("error2").style.display = "none";
+			}
+
+			function hideerror3() 
+			{
+ 				document.getElementById("error3").style.display = "none";
+			}
+
+		</script>
+		<script src="script.js"></script>
+
 		<style>
 			#bankpage{
 				position:absolute;
@@ -263,7 +335,7 @@
 			
 
 			input, textarea { 
-				font: 14px/24px Helvetica, Arial, sans-serif; 
+  font-family: "Roboto", helvetica, arial, sans-serif;
 				color: #666; 
 			}
 			input { 
@@ -286,8 +358,8 @@
 				box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); 
 				color: #437182; 
 				cursor: pointer; 
-				font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
-				font-size: 14px;
+font-family: "Roboto", helvetica, arial, sans-serif;			
+	font-size: 14px;
 				font-weight: bold; 
 				height: auto; 
 				padding: 6px 10px; 
@@ -389,7 +461,7 @@
         	</div>
        		<div id="headertext">
               	<br /><br /><br />
-              	<strong style="font-size:37px; color:#292A2C; font-family:Verdana, Geneva, sans-serif">Blood <strong style="color:#CC0000">Donation</strong> 	</strong>
+              	<strong style="font-size:37px; color:#292A2C; font-family:Verdana, Geneva, sans-serif">Blood <strong style="color:#CC0000">Connect</strong> 	</strong>
               	<br />
               	<strong style="color:#292A2C; font-size:16px; font-family:Verdana, Geneva, sans-serif"> Donate</strong> 
               	<strong style="color:#292A2C; font-size:16px; font-family:Verdana, Geneva, sans-serif">Blood,</strong> 
@@ -402,7 +474,7 @@
                   <li><a href="loginpage.php">Sign In</a></li>
                   <li><a href="registrationpage.php">Sign Up</a></li>
                   <li><a href="aboutblood.php">Blood Tips</a></li>
-                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="contact.php">Contact Us</a></li>
 				</ul>
         	</div>
         </a>
@@ -446,17 +518,45 @@
         				<div class="clearfix" id="header">        
                 			<h1>Donor Registration</h1>
 					    </div><br />
- 						<form id="send" action="donor_registration.php" name="registration" method="post" >
+ 						<form id="send" action="donor_registration.php" onSubmit="return(validate());" name="registration" method="post" >
                             <p>
             
                             <label for="name">Name</label>
-                            <input id="name" type="text" name="donor_name" value="" />
+                            <input id="name" onkeypress="return checkchar(event)" type="text" name="donor_name" class="inputText" value="" />
+                            <h5 class="error" id="error1" style="color:red;"></h5>
                             </p>
                             
-	          <p>
-            
+	          				<p>
                             <label for="id">Govt. Identification No.</label>
-                            <input id="id" type="text" name="id" value="" />
+                            <input id="id" autocomplete="off" onkeypress="return isNumberKey(event)" type="text" name="id" value="" />
+                            <span id="status"></span>
+							<h5 class="error" id="error2" style="color:red;"></h5>
+								 <script type="text/javascript">
+									document.getElementById("id").onblur = function() {
+									var xmlhttp;
+									var user=document.getElementById("id");
+									if (user.value != "")
+									{
+									if (window.XMLHttpRequest)
+									{
+									xmlhttp=new XMLHttpRequest();
+									}
+									else
+									{
+									xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+									}
+									xmlhttp.onreadystatechange=function()
+									{
+									if (xmlhttp.readyState==4 && xmlhttp.status==200)
+									{
+									document.getElementById("status").innerHTML=xmlhttp.responseText;
+									}
+									};
+									xmlhttp.open("GET","govt_id_verification.php?user="+encodeURIComponent(user.value),true);
+									xmlhttp.send();
+									}
+									};
+								 </script>
                             </p>
 
                             <p>
@@ -477,13 +577,15 @@
                             <p>
             
                             <label for="contact">Contact No: </label>
-                            <input id="contact" type="text"  value="" name="donor_contact_no" />
+                            <input id="contact" type="text" onkeypress="return isNumberKey(event)" class="inputText"  value="" name="donor_contact_no" />
+                            <h5 class="error" id="error3" style="color:red;"></h5>
                             </p>
   
                             <p>
             
                             <label for="address">Address: </label>
                             <input id="address" type="text" value="" name="donor_address" />
+                            <h5 class="error" id="error4" style="color:red;"></h5>
                             </p>
                             
                             <p>
@@ -576,6 +678,20 @@
                         	</select></label>
             					
                             </p>
+
+                              <p>
+                            <label for="division">Division: <select style="background-color:#FF;color:#666;width: 210px;padding: 4px;font-size: 15px;border: 1px solid black;;border-radius: 0;height: 30px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;margin-left:18px" name="division">
+                                  <option selected="selected" disabled="disabled">--Select your division--</option>
+                                  <option>Dhaka Division</option>   
+                                  <option>Barisal Division</option> 
+                                  <option>Khulna Division</option> 
+                                  <option>Rajshahi Division</option> 
+                                  <option>Rangpur Division</option> 
+                                  <option>Sylhet Division</option>           
+
+                        	</select></label>
+            					
+                            </p>
                             
                             <p>
             
@@ -623,6 +739,7 @@ if(isset($_POST['submit']))
         $donor_contact_no = $_POST["donor_contact_no"];
         $donor_address = $_POST["donor_address"];
         $donor_city = $_POST["donor_city"];
+        $division = $_POST["division"];
         $username= $_SESSION['username'] ;
 		$result = mysql_query("SELECT * FROM blood_bank WHERE bank_username = '$username'");
 				while($row = mysql_fetch_array($result))
@@ -630,7 +747,7 @@ if(isset($_POST['submit']))
 						$bank_id = $row['bank_id'];
 		  		} 
         
-        $query="insert into donor (bank_id,donor_name,donor_govt_id,donor_blood_group,donor_contact_no,donor_address,donor_city) values ('$bank_id','$donor_name','$id','$donor_blood_group','$donor_contact_no','$donor_address','$donor_city')";
+        $query="insert into donor (bank_id,donor_name,donor_govt_id,donor_blood_group,donor_contact_no,donor_address,donor_city,division) values ('$bank_id','$donor_name','$id','$donor_blood_group','$donor_contact_no','$donor_address','$donor_city','$division')";
       
     	if(mysql_query($query))
 		{

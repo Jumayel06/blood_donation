@@ -18,12 +18,12 @@
 		<title>Blood Donation Service</title>
 		<link href="default.css" rel="stylesheet" type="text/css" media="screen" />
         		
-		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-
+		
 
 		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>  
  		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>  
    		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> 
+
 
 		<script type="text/javascript">
      		  	$(function() {
@@ -32,6 +32,7 @@
   		 </script>
 
    		<script src="script.js"></script>
+
 		<style>
 			#bankpage{
 				position:absolute;
@@ -330,7 +331,7 @@
         	</div>
        		<div id="headertext">
               	<br /><br /><br />
-              	<strong style="font-size:37px; color:#292A2C; font-family:Verdana, Geneva, sans-serif">Blood <strong style="color:#CC0000">Donation</strong> 	</strong>
+              	<strong style="font-size:37px; color:#292A2C; font-family:Verdana, Geneva, sans-serif">Blood <strong style="color:#CC0000">Connect</strong> 	</strong>
               	<br />
               	<strong style="color:#292A2C; font-size:16px; font-family:Verdana, Geneva, sans-serif"> Donate</strong> 
               	<strong style="color:#292A2C; font-size:16px; font-family:Verdana, Geneva, sans-serif">Blood,</strong> 
@@ -343,7 +344,7 @@
                   <li><a href="loginpage.php">Sign In</a></li>
                   <li><a href="registrationpage.php">Sign Up</a></li>
                   <li><a href="aboutblood.php">Blood Tips</a></li>
-                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="contact.php">Contact Us</a></li>
 				</ul>
         	</div>
         </a>

@@ -319,7 +319,7 @@
         	</div>
        		<div id="headertext">
               	<br /><br /><br />
-              	<strong style="font-size:37px; color:#292A2C; font-family:Verdana, Geneva, sans-serif">Blood <strong style="color:#CC0000">Donation</strong> 	</strong>
+              	<strong style="font-size:37px; color:#292A2C; font-family:Verdana, Geneva, sans-serif">Blood <strong style="color:#CC0000">Connect</strong> 	</strong>
               	<br />
               	<strong style="color:#292A2C; font-size:16px; font-family:Verdana, Geneva, sans-serif"> Donate</strong> 
               	<strong style="color:#292A2C; font-size:16px; font-family:Verdana, Geneva, sans-serif">Blood,</strong> 
@@ -332,7 +332,7 @@
                   <li><a href="loginpage.php">Sign In</a></li>
                   <li><a href="registrationpage.php">Sign Up</a></li>
                   <li><a href="aboutblood.php">Blood Tips</a></li>
-                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="contact.php">Contact Us</a></li>
 				</ul>
         	</div>
         </a>

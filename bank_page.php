@@ -208,6 +208,7 @@
 			  right: 20px;
 			  top: 24.5px;
 			  pointer-events: none;
+
 			}
 			#cssmenu ul > li:hover::after,
 			#cssmenu ul > li.active::after,
@@ -276,6 +277,132 @@
 			  border-top-color: #666666;
 			}
 
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+
+body {
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+
+.table-title h3 {
+   color: #fafafa;
+   font-size: 30px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   text-transform:uppercase;
+}
+
+
+/*** Table Styles **/
+
+.table-fill {
+  background: #34495E;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 150px;
+  margin: auto;
+  max-width: 600px;
+  padding:15px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+th {
+  color:#D5DDE5;;
+  background:#34495E;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:23px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#FFFFFF;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+
+ 
+tr:first-child {
+  border-top:none;
+}
+
+tr:last-child {
+  border-bottom:none;
+}
+ 
+tr:nth-child(odd) td {
+  background:#34495E;
+}
+ 
+
+
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+td {
+  background:#34495E;
+  padding:3px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
+}
 
 		</style>
 </head>
@@ -286,11 +413,7 @@
 
 <!---------------------------------------------------- start header -------------------------------------------------->
 <div id="wrapper">
-	<div id="uppermenulay">
-		<div id="uppermenu">
-        	<a href="registrationpage.php" style="color:white;text-decoration: none;">Sign Up</a> <strong style="color:white;">|</strong>  <a href="loginpage.php" style="color:white;text-decoration: none;">Members?</a>
-        </div>
-	</div>
+	
 </div>
 
 <div id="wrapper2">
@@ -300,7 +423,7 @@
         	</div>
        		<div id="headertext">
               	<br /><br /><br />
-              	<strong style="font-size:37px; color:#292A2C; font-family:Verdana, Geneva, sans-serif">Blood <strong style="color:#CC0000">Donation</strong> 	</strong>
+              	<strong style="font-size:37px; color:#292A2C; font-family:Verdana, Geneva, sans-serif">Blood <strong style="color:#CC0000">Connect</strong> 	</strong>
               	<br />
               	<strong style="color:#292A2C; font-size:16px; font-family:Verdana, Geneva, sans-serif"> Donate</strong> 
               	<strong style="color:#292A2C; font-size:16px; font-family:Verdana, Geneva, sans-serif">Blood,</strong> 
@@ -313,7 +436,7 @@
                   <li><a href="loginpage.php">Sign In</a></li>
                   <li><a href="registrationpage.php">Sign Up</a></li>
                   <li><a href="aboutblood.php">Blood Tips</a></li>
-                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="contact.php">Contact Us</a></li>
 				</ul>
         	</div>
         </a>
@@ -350,6 +473,7 @@
                 </ul>
             </div>
             <div id="maindiv">
+            	
             	<h1 style="color:#CC0000; ">Welcome  
                 <span style="color:black;font-size:25px;">
                 <?php		
@@ -367,6 +491,142 @@
                 ?>
                 </span>
                 </h1>
+
+
+                <?php
+                $data=mysql_query("SELECT count(bag1) AS val FROM blood_given_by_donor where bag1='Available' AND bank_id='$bank_id'
+                AND donor_id IN(select donor_id from donor where donor_blood_group='A+')");
+                $row = mysql_fetch_array($data);
+				$val = $row[0];
+				$data=mysql_query("SELECT count(bag2) AS val2 FROM blood_given_by_donor where bag2='Available' AND bank_id='$bank_id'
+                AND donor_id IN(select donor_id from donor where donor_blood_group='A+')");
+                $row = mysql_fetch_array($data);
+				$val2 = $row[0];
+				$totalApos=$val+$val2;
+
+
+
+				$data=mysql_query("SELECT count(bag1) AS val FROM blood_given_by_donor where bag1='Available' AND bank_id='$bank_id'
+                AND donor_id IN(select donor_id from donor where donor_blood_group='B+')");
+                $row = mysql_fetch_array($data);
+				$val = $row[0];
+				$data=mysql_query("SELECT count(bag2) AS val2 FROM blood_given_by_donor where bag2='Available' AND bank_id='$bank_id'
+                AND donor_id IN(select donor_id from donor where donor_blood_group='B+')");
+                $row = mysql_fetch_array($data);
+				$val2 = $row[0];
+				$totalBpos=$val+$val2;
+
+				$data=mysql_query("SELECT count(bag1) AS val FROM blood_given_by_donor where bag1='Available' AND bank_id='$bank_id'
+                AND donor_id IN(select donor_id from donor where donor_blood_group='A-')");
+                $row = mysql_fetch_array($data);
+				$val = $row[0];
+				$data=mysql_query("SELECT count(bag2) AS val2 FROM blood_given_by_donor where bag2='Available' AND bank_id='$bank_id'
+                AND donor_id IN(select donor_id from donor where donor_blood_group='A-')");
+                $row = mysql_fetch_array($data);
+				$val2 = $row[0];
+				$totalAneg=$val+$val2;
+
+
+				$data=mysql_query("SELECT count(bag1) AS val FROM blood_given_by_donor where bag1='Available' AND bank_id='$bank_id'
+                AND donor_id IN(select donor_id from donor where donor_blood_group='B-')");
+                $row = mysql_fetch_array($data);
+				$val = $row[0];
+				$data=mysql_query("SELECT count(bag2) AS val2 FROM blood_given_by_donor where bag2='Available' AND bank_id='$bank_id'
+                AND donor_id IN(select donor_id from donor where donor_blood_group='B-')");
+                $row = mysql_fetch_array($data);
+				$val2 = $row[0];
+				$totalBneg=$val+$val2;
+
+				$data=mysql_query("SELECT count(bag1) AS val FROM blood_given_by_donor where bag1='Available' AND bank_id='$bank_id'
+                AND donor_id IN(select donor_id from donor where donor_blood_group='O+')");
+                $row = mysql_fetch_array($data);
+				$val = $row[0];
+				$data=mysql_query("SELECT count(bag2) AS val2 FROM blood_given_by_donor where bag2='Available' AND bank_id='$bank_id'
+                AND donor_id IN(select donor_id from donor where donor_blood_group='O+')");
+                $row = mysql_fetch_array($data);
+				$val2 = $row[0];
+				$totalOpos=$val+$val2;
+
+				$data=mysql_query("SELECT count(bag1) AS val FROM blood_given_by_donor where bag1='Available' AND bank_id='$bank_id'
+                AND donor_id IN(select donor_id from donor where donor_blood_group='O-')");
+                $row = mysql_fetch_array($data);
+				$val = $row[0];
+				$data=mysql_query("SELECT count(bag2) AS val2 FROM blood_given_by_donor where bag2='Available' AND bank_id='$bank_id'
+                AND donor_id IN(select donor_id from donor where donor_blood_group='O-')");
+                $row = mysql_fetch_array($data);
+				$val2 = $row[0];
+				$totalOneg=$val+$val2;
+				
+				$data=mysql_query("SELECT count(bag1) AS val FROM blood_given_by_donor where bag1='Available' AND bank_id='$bank_id'
+                AND donor_id IN(select donor_id from donor where donor_blood_group='AB+')");
+                $row = mysql_fetch_array($data);
+				$val = $row[0];
+				$data=mysql_query("SELECT count(bag2) AS val2 FROM blood_given_by_donor where bag2='Available' AND bank_id='$bank_id'
+                AND donor_id IN(select donor_id from donor where donor_blood_group='AB+')");
+                $row = mysql_fetch_array($data);
+				$val2 = $row[0];
+				$totalABpos=$val+$val2;
+
+				$data=mysql_query("SELECT count(bag1) AS val FROM blood_given_by_donor where bag1='Available' AND bank_id='$bank_id'
+                AND donor_id IN(select donor_id from donor where donor_blood_group='AB-')");
+                $row = mysql_fetch_array($data);
+				$val = $row[0];
+				$data=mysql_query("SELECT count(bag2) AS val2 FROM blood_given_by_donor where bag2='Available' AND bank_id='$bank_id'
+                AND donor_id IN(select donor_id from donor where donor_blood_group='AB-')");
+                $row = mysql_fetch_array($data);
+				$val2 = $row[0];
+				$totalABneg=$val+$val2;
+                ?>
+
+                <table width="700" border="1" class="table-fill" style="margin-left:10px; ">
+            				<thead >
+ 							<tr >
+    							<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; font-size:30px" width="100" align="center" colspan="4" >Summary</td>
+  							</tr>
+  							<tr >
+	    						<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; font-size:20px; color:#dd5 ">Blood Group</td>
+	    						<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center;font-size:20px; color:#dd5  ">Bags Available</td>
+		    					
+		                   
+  							</tr>
+							</thead>
+						 <tr>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center">A+</td>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $totalApos; ?></td>
+  						</tr>
+  						<tr>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center">B+</td>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $totalBpos; ?></td>
+  						</tr>
+  						<tr>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center">A-</td>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $totalAneg; ?></td>
+  						</tr>
+  						<tr>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center">B-</td>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $totalBneg; ?></td>
+  						</tr>
+  						<tr>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center">O+</td>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $totalOpos; ?></td>
+  						</tr>
+  						<tr>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center">O-</td>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $totalOneg; ?></td>
+  						</tr>
+  						<tr>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center">AB+</td>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $totalABpos; ?></td>
+  						</tr>
+  						<tr>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center">AB-</td>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $totalABneg; ?></td>
+  						</tr>
+						
+					
+		
+			</table>
+
             </div>
         </div>
 	</div>

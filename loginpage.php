@@ -271,7 +271,7 @@
         	</div>
        		<div id="headertext">
               	<br /><br /><br />
-              	<strong style="font-size:37px; color:#292A2C; font-family:Verdana, Geneva, sans-serif">Blood <strong style="color:#CC0000">Donation</strong> 	</strong>
+              	<strong style="font-size:37px; color:#292A2C; font-family:Verdana, Geneva, sans-serif">Blood <strong style="color:#CC0000">Connect</strong> 	</strong>
               	<br />
               	<strong style="color:#292A2C; font-size:16px; font-family:Verdana, Geneva, sans-serif"> Donate</strong> 
               	<strong style="color:#292A2C; font-size:16px; font-family:Verdana, Geneva, sans-serif">Blood,</strong> 
@@ -284,7 +284,7 @@
                   <li><a id="current" href="#">Sign In</a></li>
                   <li><a href="registrationpage.php">Sign Up</a></li>
                   <li><a href="aboutblood.php">Blood Tips</a></li>
-                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="contact.php">Contact Us</a></li>
 				</ul>
         	</div>
         </a>      
@@ -324,41 +324,6 @@
 				setcookie("username",$username,time()+60*60*72);	//set expire duration
 				setcookie("password",$password,time()+60*60*72);	//set expire duration
 			}
-			
-
-
-
-
-
-			$result = mysql_query("SELECT * FROM blood_given_by_donor");
-			$now = time(); // or your date as well
-			$status1="expired";
-			while($row = mysql_fetch_array($result))
-			{
-				$date = $row['date_of_blood_given'];
-				$donor_id = $row['donor_id'];
-				$bag1 = $row['bag1'];
-				$bag2 = $row['bag2'];
-				$your_date = strtotime($date);
-     				$datediff = $now - $your_date;
-     				$diff= floor($datediff/(60*60*24)); 
-				if($diff>10)
-				{
-					if($bag1=="available")
-					{
-						mysql_query("UPDATE blood_given_by_donor set bag1='$status1' where donor_id='$donor_id' AND date_of_blood_given='$date'");
-					}
-					if($bag2=="available")
-					{
-						mysql_query("UPDATE blood_given_by_donor set bag2='$status1' where donor_id='$donor_id' AND date_of_blood_given='$date'");
-					}	
-				}
-			}
-			
-
-
-
-
     			
 			echo '<script> window.location="bank_page.php"; </script>';
 		}

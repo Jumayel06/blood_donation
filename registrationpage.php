@@ -7,7 +7,104 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<title>Blood Donation Service</title>
 		<link href="default.css" rel="stylesheet" type="text/css" media="screen" />
+		<script language='javascript' type='text/javascript'>
+   			function validate()
+			{
+
+ 	 			name = document.registration.name.value;
+ 	 			id = document.registration.id.value;
+    			contact = document.registration.contact.value;
+    			address = document.registration.address.value;
+    			username = document.registration.username.value;
+    			email = document.registration.email.value;
+ 				if (name == "")
+ 				{
+	 				document.getElementById('error1').innerHTML="*Please enter a name*";
+					return false;
+ 				}
+ 				else if (id == "")
+ 				{
+					//hideerror2();
+					document.getElementById('error2').innerHTML="*Please enter id*";
+			 		return false;
+ 				}
+ 				else if (contact == "")
+ 				{
+					//hideerror2();
+					document.getElementById('error3').innerHTML="*Please enter contact no*";
+			 		return false;
+ 				}
+ 				else if (address == "")
+ 				{
+					//hideerror2();
+					document.getElementById('error4').innerHTML="*Please enter address*";
+			 		return false;
+ 				}
+ 				else if (address == "")
+ 				{
+					//hideerror2();
+					document.getElementById('error5').innerHTML="*Please enter username*";
+			 		return false;
+ 				}
+ 				else if (email == "")
+ 				{
+					//hideerror2();
+					document.getElementById('error5').innerHTML="*Please enter email*";
+			 		return false;
+ 				}
+ 			return( true );
+			}
+
+			function isNumberKey(evt)
+          	{
+             	var charCode = (evt.which) ? evt.which : event.keyCode
+             	if (charCode > 31 && (charCode < 48 || charCode > 57))
+                	return false;
+            return true;
+			}
+			  
+			function checkchar()
+			{
+				if ((event.keyCode > 64 && event.keyCode < 91) || (event.keyCode > 96 && event.keyCode < 123) || event.keyCode == 8)
+   					return true;
+				else
+   				{
+       				alert("Please Enter Only Alphabet!");
+       				return false;
+   				}
+ 			}
+
+
+			function hideerror1() 
+			{
+ 				document.getElementById("error1").style.display = "none";
+			}
+
+			function hideerror2() 
+			{
+ 				document.getElementById("error2").style.display = "none";
+			}
+
+			function hideerror3() 
+			{
+ 				document.getElementById("error3").style.display = "none";
+			}
+			function check(input) 
+			{
+	  			if (input.value != document.getElementById('p1').value) 
+	  			{
+        			input.setCustomValidity('The two passwords must match.');
+    			} 
+    			else 
+    			{
+        			// input is valid -- reset the error message
+        			input.setCustomValidity('');
+   				}
+   			}
+		</script>
+		<script src="script.js"></script>
 		<style>
+
 		*{
 			margin:0;
 			padding:0;
@@ -188,15 +285,13 @@
 			float:left;
 			margin:2px 5px 0px 0px;
 		}
-		.form_wrapper span.error{
-			visibility:hidden;
+		.form_wrapper h5.error{
 			color:red;
-			font-size:11px;
-			font-style:italic;
+			font-size:15px;
 			display:block;
 			margin:4px 30px;
 		}
-		.form_wrapper input[type="submit"] {
+		.form_wrapper button[type="submit"] {
 			background: #e3e3e3;
 			border: 1px solid #ccc;
 			color: #333;
@@ -207,6 +302,7 @@
 			text-align: center;
 			width: 150px;
 			cursor:pointer;
+
 			float:right;
 			margin:15px 20px 10px 10px;
 			text-shadow: 0px 1px 0px #fff;
@@ -217,7 +313,7 @@
 			-webkit-box-shadow: 0px 0px 2px #fff inset;
 			box-shadow: 0px 0px 2px #fff inset;
 		}
-		.form_wrapper input[type="submit"]:hover {
+		.form_wrapper button[type="submit"]:hover {
 			background: #d9d9d9;
 			-moz-box-shadow: 0px 0px 2px #eaeaea inset;
 			-webkit-box-shadow: 0px 0px 2px #eaeaea inset;
@@ -250,7 +346,7 @@
         	</div>
        		<div id="headertext">
               	<br /><br /><br />
-              	<strong style="font-size:37px; color:#292A2C; font-family:Verdana, Geneva, sans-serif">Blood <strong style="color:#CC0000">Donation</strong> 	</strong>
+              	<strong style="font-size:37px; color:#292A2C; font-family:Verdana, Geneva, sans-serif">Blood <strong style="color:#CC0000">Connect</strong> 	</strong>
               	<br />
               	<strong style="color:#292A2C; font-size:16px; font-family:Verdana, Geneva, sans-serif"> Donate</strong> 
               	<strong style="color:#292A2C; font-size:16px; font-family:Verdana, Geneva, sans-serif">Blood,</strong> 
@@ -263,7 +359,7 @@
                   <li><a href="loginpage.php">Sign In</a></li>
                   <li><a id="current" href="#">Sign Up</a></li>
                   <li><a href="aboutblood.php">Blood Tips</a></li>
-                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="contact.php">Contact Us</a></li>
 				</ul>
         	</div>
         </a>  
@@ -275,60 +371,112 @@
                 <div class="wrapper" id="newdiv2">
                     <div class="content"  >
                         <div id="form_wrapper" class="form_wrapper" >
-                            <form class="register active" action="registrationpage.php" name="registration" method="post">
+                            <form id="send" class="register active" action="registrationpage.php" onSubmit="return(validate());" name="registration" method="post">
                                 <h3>Register</h3>
                                 <div class="column">
                                     <div>
                                         <label>Blood Bank Name:</label>
-                                        <input type="text"  name="bank_name"/>
-                                        <span class="error">This is an error</span>
+                                        <input  id="name"  type="text" onkeypress="return checkchar(event)" name="bank_name" value="" />
+                                        <h5 class="error" id="error1" style="color:red;"></h5>
         
                                     </div>
                                     <div>
                                         <label>Identification No:</label>
-                                        <input type="text" name="bank_identification" placeholder="Govt. approved only"  />
-                                        <span class="error">This is an error</span>
+                                        <input type="text" id="id" name="bank_identification" autocomplete="off" value="" onkeypress="return isNumberKey(event)" placeholder="Govt. approved only"  />
+                                        <h5 class="error" id="error2" style="color:red;"><span id="status"></span></h5>
+                                        <script type="text/javascript">
+											document.getElementById("id").onblur = function() {
+											var xmlhttp;
+											var user=document.getElementById("id");
+											if (user.value != "")
+											{
+											if (window.XMLHttpRequest)
+											{
+											xmlhttp=new XMLHttpRequest();
+											}
+											else
+											{
+											xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+											}
+											xmlhttp.onreadystatechange=function()
+											{
+											if (xmlhttp.readyState==4 && xmlhttp.status==200)
+											{
+											document.getElementById("status").innerHTML=xmlhttp.responseText;
+											}
+											};
+											xmlhttp.open("GET","govt_id_verification_bank.php?user="+encodeURIComponent(user.value),true);
+											xmlhttp.send();
+											}
+											};
+								 		</script>
+                                    </div>
+
+                                    <div>
+                                        <label>Contact No:</label>
+                                        <input id="contact" type="text" onkeypress="return isNumberKey(event)" value="" name="bank_contact_no"/>
+                                        <h5 class="error" id="error3" style="color:red;"></h5>
                                     </div>
                                     <div>
                                         <label>Address:</label>
-                                        <input type="text" name="bank_address" />
-                                        <span class="error">This is an error</span>
+                                        <input id="address" type="text" value=""  name="bank_address" />
+                                        <h5 class="error" id="error4" value="" style="color:red;"></h5>
         
-                                    </div>
-                                    
-                                    <div>
-                                        <label>Contact No:</label>
-                                        <input type="text" name="bank_contact_no"/>
-                                        <span class="error">This is an error</span>
                                     </div>
                                     
                                 </div>
                                 <div class="column">
                                     <div>
                                         <label>Username:</label>
-                                        <input type="text" name="bank_username"/>
-                                        <span class="error">This is an error</span>
+                                        <input type="text" value="" id="username" name="bank_username" value="" />
+                                        <h5 class="error" id="error5" style="color:red;"><span id="status2"></span></h5>
+                                        
+                                        <script type="text/javascript">
+											document.getElementById("username").onblur = function() {
+											var xmlhttp;
+											var user=document.getElementById("username");
+											if (user.value != "")
+											{
+											if (window.XMLHttpRequest)
+											{
+											xmlhttp=new XMLHttpRequest();
+											}
+											else
+											{
+											xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+											}
+											xmlhttp.onreadystatechange=function()
+											{
+											if (xmlhttp.readyState==4 && xmlhttp.status==200)
+											{
+											document.getElementById("status2").innerHTML=xmlhttp.responseText;
+											}
+											};
+											xmlhttp.open("GET","username_verification_bank.php?user="+encodeURIComponent(user.value),true);
+											xmlhttp.send();
+											}
+											};
+								 		</script>
                                     </div>
                                     <div>
                                         <label>Email:</label>
-                                        <input type="text" name="bank_email" />
-                                        <span class="error">This is an error</span>
+                                        <input type="text" id="email" name="bank_email" value="" />
+                                        <h5 class="error" id="error6" value="" style="color:red;"></h5>
                                     </div>
                                     <div>
                                         <label>Password:</label>
-                                        <input type="password" name="bank_password" />
-                                        <span class="error">This is an error</span>
+                                        <input type="password" name="bank_password" required x-moz-errormessage="Enter Password" id="p1" value="" />
+                                        <span class="error"></span>
                                     </div>
                                     <div>
                                         <label>Confirm Password:</label>
-                                        <input type="password" />
-                                        <span class="error">This is an error</span>
+                                        <input type="password" required x-moz-errormessage="Enter Password" id="p2" value="" oninput="check(this)"   />
+                                        <span class="error"></span>
                                     </div>
                                 </div>
                                 <div class="bottom">
-                                    
-                                    <input type="submit" name="submit" id="submit" value="Register" />
-                                    <a href="loginpage.html" rel="login" class="linkform">You have an account already? Log in here</a>
+                                     <button id="submit" type="submit" name="submit">Register</button>
+                                    <a href="loginpage.php" rel="login" class="linkform">You have an account already? Log in here</a>
                                     <div class="clear"></div>
                                 </div>
                             </form>

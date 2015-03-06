@@ -99,7 +99,7 @@
                   <li><a href="loginpage.php">Sign In</a></li>
                   <li><a href="registrationpage.php">Sign Up</a></li>
                   <li><a href="aboutblood.php">Blood Tips</a></li>
-                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="contact.php">Contact Us</a></li>
 				</ul>
         	</div>
         </a>
@@ -140,7 +140,7 @@
    			<p style="color:white; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;  margin-left:100px;color:white; margin-top:0px; font-size:15px; margin-bottom:0px; padding-top:20px">City:  
    				<select style="background-color:#FF;color:#666;width: 210px;padding: 5px;font-size: 15px;border: 0;border-radius: 0;height: 30px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;margin-left:18px" name="city">
                       <option selected="selected" disabled="disabled">--Select your city--</option>
-                      <option disabled="disabled" style="color:#B00200; font-size:30px;">Dhaka Division</option> 
+                      <option style="color:#B00200; font-size:30px;">Dhaka Division</option> 
                       <option>Dhaka</option>
                       <option>Bhairab</option>
                       <option>Faridpur</option>
@@ -158,7 +158,7 @@
                       <option>Tangail</option>
                       <option>Tongi</option>
                       <option>Gopalganj</option>
-                      <option disabled="disabled" style="color:#B00200; font-size:30px;">Barisal Division</option> 
+                      <option style="color:#B00200; font-size:30px;">Barisal Division</option> 
                       <option>Barguna</option>
                       <option>Bakerganj</option>
                       <option>Bhola</option>
@@ -183,7 +183,7 @@
                       <option>Sandwip</option>
                       <option>Comilla</option>
                       <option>Burichong</option>
-         			  <option disabled="disabled" style="color:#B00200; font-size:30px;">Khulna Division</option>
+         			  <option style="color:#B00200; font-size:30px;">Khulna Division</option>
       				  <option>Bagherhat</option>
                       <option>Chuadanga</option>
                       <option>Jessore</option>
@@ -206,7 +206,7 @@
                       <option>Iswardi</option>
                       <option>Santhia</option>
                       <option>Sherpur</option>
-		              <option disabled="disabled" style="color:#B00200; font-size:30px;">Rangpur Division</option>
+		              <option style="color:#B00200; font-size:30px;">Rangpur Division</option>
          			  <option>Saidpur</option>
                       <option>Dinajpur</option>
                       <option>Gaibandha</option>
@@ -216,7 +216,7 @@
                       <option>Nilphamari</option>
                       <option>Panchagarh</option>
                       <option>Thakurgaon</option>
-		              <option disabled="disabled" style="color:#B00200; font-size:30px;">Rangpur Division</option>
+		              <option style="color:#B00200; font-size:30px;">Sylhet Division</option>
                       <option>Golapganj</option>
                       <option>Habiganj</option>
                       <option>Maulvibazar</option>
@@ -250,14 +250,14 @@
         <h3 style="color:#333333; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif; font-size:20px">Types of Donation</h3>
         
         <p>You may not know it, but you can donate more than just blood. What you think of as...   <br /><br />
-        <a href="typedonation.html" style="text-decoration:none; color:black; "><div id="viewdetails" class="b">View Details >></div></a>
+        <a href="typedonation.php" style="text-decoration:none; color:black; "><div id="viewdetails" class="b">View Details >></div></a>
         </p>
       </div>
         <div id="threethree">
         <h3 style="color:#333333; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif; font-size:20px">FAQ</h3>
         
         <p>Frequently Asked Questions about giving blood, who can give?...   <br /><br />
-        <a href="faq.html" style="text-decoration:none; color:black; "><div id="viewdetails" class="b">View Details >></div></a>
+        <a href="faq.php" style="text-decoration:none; color:black; "><div id="viewdetails" class="b">View Details >></div></a>
         </p>
 	</div>
 </div>
@@ -283,9 +283,15 @@ if(isset($_POST['submit']) && isset($_POST['bgroup']) && isset($_POST['city']))
         $database = mysql_select_db("blood_donation",$connection);
         $bgroup = $_POST["bgroup"];
         $city = $_POST["city"];
-		$_SESSION['bgroup']=$bgroup;
+        $_SESSION['division']='null';
+        if($city=='Dhaka Division' || $city=='Barisal Division' || $city=='Khulna Division' || $city=='Rajshahi Division' || $city=='Rangpur Division' || $city=='Sylhet Division' )
+		    {
+           $_SESSION['division']=$city;
+        }
+    $_SESSION['bgroup']=$bgroup;
 		$_SESSION['city']=$city;
-echo '<script> window.location="after_search.php"; </script>';}
+echo '<script> window.location="after_search.php"; </script>';
+}
 ?>
 
 

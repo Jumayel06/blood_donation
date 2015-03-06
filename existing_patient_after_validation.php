@@ -25,7 +25,7 @@ $data=mysql_query("SELECT COUNT(bag2) FROM blood_given_by_donor where bank_id='$
 
 			if($bags<=$remaining && $bags<=$total)
 			{
-								print "<span style=\"color:red;\"><br />$remaining<br />$total </span>";
+								//print "<span style=\"color:red;\"><br />$remaining<br />$total </span>";
 
 				print "<span style=\"color:green;\"><br /> Patient can take $bags bag blood!</span>";
 			}

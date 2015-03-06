@@ -9,16 +9,16 @@
 		<link href="default.css" rel="stylesheet" type="text/css" media="screen" />
         <style>
 
-#aboutblood{
-	position:absolute;
-	left:10%;
-	right:10%;
-	font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
-    font-size:14px;
-	padding:10px;
-	
-}
-</style>
+			#aboutblood{
+				position:absolute;
+				left:10%;
+				right:10%;
+				font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+			    font-size:14px;
+				padding:10px;
+				
+			}
+		</style>
         
 		
 </head>
@@ -48,10 +48,10 @@
         
         <div id="headertext">
               <br /><br /><br />
-              <strong style="font-size:37px; color:#292A2C; font-family:Verdana, Geneva, sans-serif">Blood <strong style="color:#CC0000">Donation</strong> 	</strong>
+              <strong style="font-size:37px; color:#292A2C; font-family:Verdana, Geneva, sans-serif">Blood <strong style="color:#CC0000">Connect</strong> 	</strong>
               <br />
               <strong style="color:#292A2C; font-size:16px; font-family:Verdana, Geneva, sans-serif"> Donate</strong> 
-              <strong style="color:#292A2C; font-size:16px; font-family:Verdana, Geneva, sans-serif">Blood</strong>, 
+              <strong style="color:#292A2C; font-size:16px; font-family:Verdana, Geneva, sans-serif">Blood,</strong> 
               <strong style="color:#292A2C; font-size:16px; font-family:Verdana, Geneva, sans-serif">Save
 </strong> 
               <strong style="color:#292A2C; font-size:16px; font-family:Verdana, Geneva, sans-serif">Lives</strong>
@@ -62,7 +62,7 @@
               <li><a  href="loginpage.php">Sign In</a></li>
               <li><a href="registrationpage.php">Sign Up</a></li>
               <li><a id="current" href="#">Blood Tips</a></li>
-              <li><a href="#">Contact Us</a></li>
+              <li><a href="contact.php">Contact Us</a></li>
 			</ul>
         </div>  
         </a>   
@@ -122,7 +122,7 @@
 </div>
 <!-- start footer -->
 <br /><br /><br />
-<div id="footer">
+<div id="footer" style="margin-top:360px;">
 	<p class="legal">
 		@2014 Blood Donation Service. All Rights Reserved.
   </p>
