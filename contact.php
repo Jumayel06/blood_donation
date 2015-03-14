@@ -32,6 +32,7 @@
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
+    border: 1px solid black;
 }
 .smart-green h1 {
     font: 24px "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -60,7 +61,8 @@
 .smart-green label>span {
     float: left;
     margin-top: 10px;
-    color: #5E5E5E;
+    color: #000000;
+    font-weight: bold;
 }
 .smart-green input[type="text"], .smart-green input[type="email"], .smart-green textarea, .smart-green select {
     color: #555;
@@ -69,8 +71,9 @@
     width: 100%;
     padding: 0px 0px 0px 10px;
     margin-top: 2px;
-    border: 1px solid #E5E5E5;
+    
     background: #FBFBFB;
+
     outline: 0;
     -webkit-box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
     box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
@@ -162,7 +165,7 @@
 	<div id="temp">
 		<div id="aboutblood">
 			
-			<form action="" method="post" class="smart-green">
+			<form action="contact.php" method="post" class="smart-green">
 			    <h1><b>Contact Form</b><br /> 
 			        <span>Please fill all the texts in the fields.</span>
 			    </h1>
@@ -183,7 +186,7 @@
 			    
 			     <label>
 			        <span>&nbsp;</span> 
-			        <input type="button" class="button" value="Send" /> 
+			        <input type="submit" class="button" value="Send" name="submit" /> 
 			    </label>    
 			</form>
 
@@ -200,3 +203,30 @@
 <!-- end footer -->
 </body>
 </html>
+<?php		
+					if(isset($_POST['submit']) && isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']))
+					{
+
+       					$connection = mysql_connect('localhost','root','') or die(mysql_error());
+        				$database = mysql_select_db("blood_donation",$connection);
+						$name = $_POST["name"];
+        				$email = $_POST["email"];
+        				$message = $_POST["message"];
+        				
+        				if($email!="" && $name!="" && $message!="")
+        				{
+	        				$query="insert into responds (name,email,message) values ('$name','$email','$message')";
+	      
+	    					if(mysql_query($query))
+							{
+								echo'<script> window.location="index.php"; </script> ';
+							}
+						}else
+						{
+							echo '<script>';
+							echo 'alert("Fill all the fields!");';
+							echo 'location.href="contact.php"';
+							echo '</script>';
+						}
+					}
+?>

@@ -12,6 +12,7 @@ $flag["code"]=0;
 $flag["go"]=0;
 $flag["total_blood"]=0;
 $flag["blood"]="";
+$flag["dates"]=1;
 
 if(mysql_num_rows($data)>0)
 {
@@ -30,35 +31,47 @@ if(mysql_num_rows($data)>0)
 
 			 if($val>0)
 			 {
-			 	$data=mysql_query("SELECT SUM(no_of_bags) FROM blood_taken_by_patient where patient_id='$patient_id'");
+			 	$now = date("Y-m-d");
+			    $date = strtotime($now .' -2 months');
+				$datebefore=date('Y-m-d', $date);
 
+			 	//$data=mysql_query("SELECT SUM(no_of_bags) FROM blood_taken_by_patient where patient_id='$patient_id'");
+                $data=mysql_query("SELECT SUM(no_of_bags) FROM blood_taken_by_patient where patient_id='$patient_id' AND 
+			 	(date_of_blood_taken between '$datebefore' AND '$now')");
+				
 				while($row = mysql_fetch_array($data))
 				{
 					$total=$row['SUM(no_of_bags)'];				
-				}  
+				}
 
 				if($total>=5)
 	 			{
 	 			  $flag["go"]=0;
 	 			  $flag["total_blood"]=$total;
+	 			  $flag["dates"]=0;
 	 			}
 	 			else
 	 			{
 	 			 $flag["go"]=1;
 	 			 $flag["total_blood"]=$total;
+	 			 $flag["dates"]=1;
 	 			}
+
+	 			
 			 }
 			else
 			{
 			 	
 			 	$flag["go"]=1;
 			 	$flag["total_blood"]=0;
+			 	$flag["dates"]=1;
 			}
 $flag["code"]=1;
 }
 else
 {
 	$flag["code"]=0;
+	$flag["dates"]=-1;
 }
 
 print(json_encode($flag));

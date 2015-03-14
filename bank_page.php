@@ -465,8 +465,10 @@ td.text-right {
                     </li>
                     <li class='active has-sub'><a href='#'><span>Inquiry</span></a>
                         <ul>
-                            <li><a href='donor_list.php'><span>List of Donors</span></a></li>
-                            <li><a href='#'><span>List of Patients</span></a></li>
+                            <li><a href='donor_list.php'><span>List of Available Donors</span></a></li>
+                            <li><a href='registered_donor_list.php'><span>List of Registered Donors</span></a></li>
+                            <li><a href='registered_patient_list.php'><span>List of Registered Patients</span></a></li>
+
                         </ul>
                     </li>
                     <li><a href='logout.php'><span>Logout</span></a>

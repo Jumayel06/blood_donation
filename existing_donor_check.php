@@ -36,6 +36,11 @@ if(mysql_num_rows($data)>0)
 				  $flag['message']=1;
 				}
 	}
+	else
+	{
+   		$flag['message']=1;
+	}
+
 }
 else
 {

@@ -31,47 +31,17 @@
 
 
 			}	
-			#city{
-				width: 180px;
-				height: 100px;
-				float: left;
-				margin-right: 30px;
-				text-align: center;	
-
-			}	
-			#refine{
-				width: 130px;
-				height: 100px;
-				float: left;
-				margin-right: 10px;
-				text-align: center;	
-
-			}
-			#search{
-				width: 100px;
-				float: left;	
-				
-				text-align: center;
-				margin-top: 55px;
-
-
-			}	
-			#maindiv_inside{
-				
-				height: 100px;
-				border: 1px solid;
-				border-color: #666666;
-			}
-
-
+			
+		
 			#bankpage{
 				position:absolute;
 				left:10%;
 				right:10%;
-				padding:10px;
+				padding:10px;	
+
 				font-family: 'trebuchet MS', 'Lucida sans', Arial;
     			font-size: 14px;
-    			color: #444;	
+    			color: #444;
 			}
 		 	.a:hover {
     			background-color:#B00200;
@@ -306,6 +276,8 @@
 			#cssmenu ul ul > li.open::after {
 			  border-top-color: #666666;
 			}
+
+
 table {
     *border-collapse: collapse; /* IE7 and lower */
     border-spacing: 0;
@@ -458,7 +430,6 @@ table {
     border-radius: 0 0 6px 6px
 }
 
-
 		</style>
 </head>
 
@@ -521,10 +492,9 @@ table {
                     </li>
                     <li class='active has-sub'><a href='#'><span>Inquiry</span></a>
                         <ul>
-                            <li><a href='#'><span>List of Available Donors</span></a></li>
+                            <li><a href='donor_list.php'><span>List of Available Donors</span></a></li>
                             <li><a href='registered_donor_list.php'><span>List of Registered Donors</span></a></li>
-                            <li><a href='registered_patient_list.php'><span>List of Registered Patients</span></a></li>
-
+                            <li><a href='#'><span>List of Registered Patients</span></a></li>
                         </ul>
                     </li>
                     <li><a href='logout.php'><span>Logout</span></a>
@@ -532,132 +502,9 @@ table {
             </div>
             <div id="maindiv">
  			
- 			<div id="maindiv_inside">
+ 			
 
- 			<form action="donor_list.php" method="post"> 
-			<div id="blood_group">
-				<h3>Blood Group</h3>
-   					<select style="background-color:#FF;color:#666;width: 200px;padding: 5px;font-size: 15px;border: 1px solid black;border-radius: 0;height: 30px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;" name="bgroup">
-                      <option selected="selected" disabled="disabled">--Select blood Group--</option>
-                      <option>A+</option>
-                      <option>B+</option>
-                      <option>A-</option>
-                      <option>B-</option>
-                      <option>O+</option>
-                      <option>O-</option>
-                      <option>AB+</option>
-                      <option>AB-</option>
-   					</select>
-			</div>
-			<div id="city">
-				<h3>City</h3>
-				<select style="background-color:#FF;color:#666;width: 200px;padding: 5px;font-size: 15px;border: 1px solid black;border-radius: 0;height: 30px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;" name="city">
-                      <option selected="selected" disabled="disabled">--Select your city--</option>
-                      <option disabled="disabled" style="color:#B00200; font-size:30px;">Dhaka Division</option> 
-                      <option>Dhaka</option>
-                      <option>Bhairab</option>
-                      <option>Faridpur</option>
-                      <option>Jamalpur</option>
-                      <option>Kishoreganj</option>
-                      <option>Manikganj</option>
-                      <option>Madaripur</option>
-                      <option>Munshiganj</option>
-                      <option>Mymensingh</option>
-                      <option>Narsingdi</option>
-                      <option>Netrokona</option>
-                      <option>Rajbari</option>
-                      <option>Shariatpur</option>
-                      <option>Sherpur</option>
-                      <option>Tangail</option>
-                      <option>Tongi</option>
-                      <option>Gopalganj</option>
-                      <option disabled="disabled" style="color:#B00200; font-size:30px;">Barisal Division</option> 
-                      <option>Barguna</option>
-                      <option>Bakerganj</option>
-                      <option>Bhola</option>
-                      <option>Jhalokati</option>
-                      <option>Patuakhali</option>
-                      <option>Pirojpur</option>
-                      <option>Akhaura</option>
-                      <option>Cox's Bazar</option>
-                      <option>Bandarban</option>
-                      <option>Brahmanbaria</option>
-                      <option>Sarail</option>
-                      <option>Shahbazpur Town</option>
-                      <option>Chandpur</option>
-                      <option>Chaumuhani</option>
-                      <option>Feni</option>
-                      <option>Khagrachhari</option>
-                      <option>Laksam</option>
-                      <option>Lakshmipur</option>
-                      <option>Noakhali</option>
-                      <option>Rangamati</option>
-                      <option>Rangunia</option>
-                      <option>Sandwip</option>
-                      <option>Comilla</option>
-                      <option>Burichong</option>
-         			  <option disabled="disabled" style="color:#B00200; font-size:30px;">Khulna Division</option>
-      				  <option>Bagherhat</option>
-                      <option>Chuadanga</option>
-                      <option>Jessore</option>
-                      <option>Jhenaidah</option>
-                      <option>Kushtia</option>
-                      <option>Magura</option>
-                      <option>Meherpur</option>
-                   	  <option>Narail</option>
-                      <option>Shatkhira</option>
-                      <option disabled="disabled" style="color:#B00200; font-size:30px;">Rajshahi Division</option>
-                      <option>Bogra</option>
-                      <option>Joypurhat</option>
-                      <option>Naogaon</option>
-                      <option>Natore</option>
-                      <option>Nawabganj</option>
-                      <option>Pabna</option>
-                      <option>Sirajganj</option>
-                      <option>Shahjadpur</option>
-                      <option>Ullapara</option>
-                      <option>Iswardi</option>
-                      <option>Santhia</option>
-                      <option>Sherpur</option>
-		              <option disabled="disabled" style="color:#B00200; font-size:30px;">Rangpur Division</option>
-         			  <option>Saidpur</option>
-                      <option>Dinajpur</option>
-                      <option>Gaibandha</option>
-                      <option>Gobindaganj</option>
-                      <option>Kurigram</option>
-                      <option>Lalmonirhat</option>
-                      <option>Nilphamari</option>
-                      <option>Panchagarh</option>
-                      <option>Thakurgaon</option>
-		              <option disabled="disabled" style="color:#B00200; font-size:30px;">Rangpur Division</option>
-                      <option>Golapganj</option>
-                      <option>Habiganj</option>
-                      <option>Maulvibazar</option>
-                      <option>Sreemangal</option>
-                      <option>Sunamganj</option>
-                      <option>Beanibazar</option>
-                      <option>Barlekha</option>             
-   			</select>
-			</div>
-			<div id="refine">
-				<h3>Refine Search</h3>
-				<select style="background-color:#FF;color:#666;width: 130px;padding: 5px;font-size: 15px;border: 1px solid black;border-radius: 0;height: 30px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;" name="refine">
-					  <option selected="selected" disabled="disabled">--Select--</option>
-                      <option>Available</option>
-                      <option>All</option>
-    				  </select>			
-   			</div>
-			<div id="search">
-				<input class="button1" type="submit" value="Search" name="submit">
-			</div>
-			</form>
-
-			</div>
-			<br /><br />
-
-			<?php		
-					if(isset($_POST['submit']) && isset($_POST['bgroup']) && isset($_POST['city']))
-					{
+			<?php			
 						$connection = mysql_connect('localhost','root','') or die(mysql_error());
 						$database = mysql_select_db("blood_donation",$connection);
 						$username= $_SESSION['username'] ;
@@ -665,41 +512,26 @@ table {
 						while($row = mysql_fetch_array($result))
 						{
 							$bank_id = $row['bank_id'];
-	  					} 
-						
-	  					$bgroup = $_POST["bgroup"];
-	        			$city = $_POST["city"];
-	        			$refine = $_POST["refine"];
-						$_SESSION['bgroup']=$bgroup;
-						$_SESSION['city']=$city;
-						$_SESSION['search_type']=$refine;
-	        			if($refine == "Available")
-	        			{
-	        				$result = mysql_query("SELECT * FROM donor WHERE donor_blood_group = '$bgroup' AND donor_city='$city' AND donor_id IN (SELECT donor_id FROM blood_given_by_donor where bank_id='$bank_id' AND (bag1='available' OR bag2='available'))");
-	        			}
-	        			else
-	        			{
-	        				$result = mysql_query("SELECT * FROM donor WHERE donor_blood_group = '$bgroup' AND donor_city='$city' AND donor_id IN (SELECT donor_id FROM blood_given_by_donor where bank_id='$bank_id')");
-	        			}
-	        
-	        			
-
-	        			echo "Blood Group: ".$_SESSION['bgroup']; 
-	        			echo "City: ".$_SESSION['city']; 
-	        		 	echo "Search Type: ".$_SESSION['search_type']; 
+	  					}    			
+	        				$result = mysql_query("SELECT * FROM patient WHERE bank_id='$bank_id'");
+	        		
 	        ?>
 	        		
 
 						<table border="1" width="720px" style="margin-left:5px; class="bordered" ">
             				<thead >
  							<tr >
-    							<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; font-size:30px" width="100" align="center" colspan="4" >Donor List</td>
+    							<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; font-size:30px" width="100" align="center" colspan="7" >Registered Patients</td>
   							</tr>
   							<tr >
-	    						<td style="text-align:center;font-weight:bold; color:black;font-size:18px; ">Donor Name</td>
-	    						<td style="text-align:center;font-weight:bold; color:black;font-size:18px; ">Donor Govt. Id</td>
-		    					<td style="text-align:center;font-weight:bold; color:black;font-size:18px; ">Donor Contact  No</td>
-		                        <td style="text-align:center;font-weight:bold; color:black;font-size:18px; ">Donor Address</td>
+	    						<td style="text-align:center;font-weight:bold; color:black;font-size:18px; ">Patient Name</td>
+	    						<td style="text-align:center;font-weight:bold; color:black;font-size:18px; ">National Identification No.</td>
+	    						<td style="text-align:center;font-weight:bold; color:black;font-size:18px; ">Blood Group</td>
+	    						<td style="text-align:center;font-weight:bold; color:black;font-size:18px; ">Disease</td>
+		    					<td style="text-align:center;font-weight:bold; color:black;font-size:18px; ">Contact  No</td>
+		                        <td style="text-align:center;font-weight:bold; color:black;font-size:18px; ">Address</td>
+		                        <td style="text-align:center;font-weight:bold; color:black;font-size:18px; ">City</td>
+		                        
 		                   
   							</tr>
 							</thead>
@@ -708,28 +540,45 @@ table {
 	
 					while($row = mysql_fetch_array($result))
 					{
-						$donor_id = $row['donor_id'];
-						$donor_govt_id = $row['donor_govt_id'];
-						$donor_name = $row['donor_name'];
-						$donor_contact_no = $row['donor_contact_no'];
-						$donor_address = $row['donor_address'];
+						$patient_id = $row['patient_id'];
+						$patient_govt_id = $row['patient_govt_id'];
+						$patient_name = $row['patient_name'];
+						$patient_blood_group = $row['patient_blood_group'];
+						$patient_contact_no = $row['patient_contact_no'];
+						$patient_address = $row['patient_address'];
+						$patient_city = $row['patient_city'];
+						$patient_disease = $row['patient_disease'];
 			?>
 						 <tr>
-    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $donor_name; ?></td>
-    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $donor_govt_id; ?></td>
-                                    <td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $donor_contact_no; ?></td>
-                                    <td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $donor_address; ?></td>
-  						
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $patient_name; ?></td>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $patient_govt_id; ?></td>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $patient_blood_group; ?></td>
+    								<td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $patient_disease; ?></td>
+                                    <td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $patient_contact_no; ?></td>
+                                    <td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $patient_address; ?></td>
+                                    <td style="font-family:Tahoma, Geneva, sans-serif; text-align:center; "width="100" align="center"><?php echo $patient_city; ?></td>						
 
   						</tr>
 						
 					
-			<?php  } }?>
+			<?php   }?>
 			</table>
 
             </div>
+			
+<br /> <br /><br /><br />
+
+
+	        <div id="footer">
+	        
+				<p class="legal">
+					@2014 Blood Donation Service. All Rights Reserved.
+	    		</p>
+			</div>
         </div>
+
 	</div>
+	
 </div>
 
 
@@ -737,12 +586,8 @@ table {
 
 
 <!---------------------------------------------------- start footer ----------------------------------------------------->
-<br /><br /><br />
-<div id="footer">
-	<p class="legal">
-		@2014 Blood Donation Service. All Rights Reserved.
-    </p>
-</div>
+
+
 <!------------------------------------------------------ end footer ------------------------------------------------------>
 </body>
 </html>

@@ -6,7 +6,7 @@
 		$city=$_POST['city'];
       
             $res = mysql_query("SELECT * FROM blood_given_by_donor");
-			$now = time(); // or your date as well
+			$now = time(); 
 			$status1="expired";
 			while($row = mysql_fetch_array($res))
 			{
@@ -32,7 +32,14 @@
 			}
 
 		$result = mysql_query("SELECT * FROM donor WHERE donor_blood_group = '$bgroup' AND donor_city='$city' AND donor_id IN (SELECT donor_id FROM blood_given_by_donor WHERE (bag1='available' OR bag2='available'))");
-					
+if($city=='Dhaka Division' || $city=='Barisal Division' || $city=='Khulna Division' || $city=='Rajshahi Division' || $city=='Rangpur Division' || $city=='Sylhet Division' )
+	{
+     $result = mysql_query("SELECT * FROM donor WHERE donor_blood_group = '$bgroup' AND division='$city' AND donor_id IN (SELECT donor_id FROM blood_given_by_donor where bag1='available' OR bag2='available')");  
+    }
+    else
+	{
+	   $result = mysql_query("SELECT * FROM donor WHERE donor_blood_group = '$bgroup' AND donor_city='$city' AND donor_id IN (SELECT donor_id FROM blood_given_by_donor WHERE (bag1='available' OR bag2='available'))");				
+	}				
 					$all_info=array();
 
 					while($row = mysql_fetch_array($result))
@@ -40,6 +47,7 @@
 						$info=array();
 						$info['donor_name'] = $row['donor_name'];
 						$info['donor_govt_id'] = $row['donor_govt_id'];
+						$info['donor_blood_group'] = $row['donor_blood_group'];
 						$info['donor_contact_no'] = $row['donor_contact_no'];
 						$info['donor_address'] = $row['donor_address'];
 						$info['donor_city']=$row['donor_city'];
